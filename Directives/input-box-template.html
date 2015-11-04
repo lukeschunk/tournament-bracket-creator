@@ -1,0 +1,35 @@
+<div class="block">
+
+    <form class="navbar-form navbar-left" role="search" ng-submit="addPlayerToTable()">
+        <div class="form-group">
+<!--            <input ng-keyup="$event.keyCode == 13 && myFunc(currentPlayer)" ng-model="currentPlayer.name" type="text" class="form-control" placeholder="Name">-->
+<input ng-model="currentPlayer.name" type="text" class="form-control" placeholder="Name">
+<!--            <input ng-keyup="$event.keyCode == 13 && myFunc(currentPlayer)" ng-model="currentPlayer.rank" type="number" class="form-control rank-input" placeholder="Seed">-->
+        <input ng-model="currentPlayer.rank" type="number" class="form-control rank-input" placeholder="Seed">
+
+        </div>
+<!--        ______________________________________BUTTONS _____________________________________________-->
+        <button type="submit" class="btn btn-default submit-player"> Submit Player</button>
+        <button type="submit" class="btn btn-default">Make Bracket </button>
+    </form>
+
+</div>
+
+<div id="test">
+    
+</div>
+<div id="block">
+<table class="table table-hover table-margin">
+    <tr>
+        <th> Player/Team Name</th>
+        <th> Rank </th>
+    </tr>
+
+    <tr ng-repeat="player in players | orderBy:'rank'">
+        <td> {{ player.name }} </td>
+        <td> {{ player.rank }} </td>
+    </tr>
+
+
+</table>
+</div>
