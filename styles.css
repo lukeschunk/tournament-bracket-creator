@@ -48,3 +48,9 @@ h1 {
 table-margin {
     margin-top: 30px;
 }
+
+.fixed-width {
+    width: 220px;
+    text-align: left;
+    padding-left: 10px;
+}
