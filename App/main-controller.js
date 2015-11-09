@@ -27,11 +27,11 @@ myApp.controller("myController", ["$scope", "mainService", function ($scope, mai
 
         //_____________________________________Create Bye Array____________________________________________
 
-        $scope.myByeArray = mainService.createByeArray($scope.bracketSize.length, $scope.players.length);
-        
-        
+        var myByeArray = mainService.createByeArray($scope.bracketSize.length, $scope.players.length);
 
-        console.log("(CONTROLLER)this is the bye Array", $scope.myByeArray); //$scope.myByeArray is the array of the byes
+
+
+        console.log("(CONTROLLER)this is the bye Array", myByeArray); //$scope.myByeArray is the array of the byes
 
         //_______________________________________Create Unseeded Players Array____________________________________________
 
@@ -57,8 +57,8 @@ myApp.controller("myController", ["$scope", "mainService", function ($scope, mai
 
         //___________________________________________Add Byes to Main Array_____________________________________________
 
-        $scope.playersInOrderWithByes = mainService.addByes($scope.myByeArray, $scope.playersInOrder);
-        console.log("this is playersInOrderWithByes", $scope.playersInOrderWithByes);
+        //        $scope.playersInOrderWithByes = mainService.addByes(myByeArray, $scope.playersInOrder);
+        //        console.log("this is playersInOrderWithByes", $scope.playersInOrderWithByes);
 
         //___________________________________________Add Unseeded Players to Main Array__________________________________________
 
@@ -66,5 +66,18 @@ myApp.controller("myController", ["$scope", "mainService", function ($scope, mai
         console.log("this is final bracket!", $scope.finalBracket);
 
 
+        //___________________________________________Add Byes to Main Array (2nd Attempt)____________________________________________   
+
+        addByes(myByeArray, $scope.playersInOrder);
+
+        function addByes(arrayOfByes, mainArray) {
+            console.log("this is array of Byes", arrayOfByes);
+            console.log("this is mainArray", mainArray);
+
+        }
+
     }
+
+
+
 }]);

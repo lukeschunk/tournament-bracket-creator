@@ -84,8 +84,8 @@ myApp.service('mainService', function () {
 
         var seed1Slot = bracketLengthArray[0]; //1
         var seed2Slot = bracketLengthArray[bracketLengthArray.length - 1]; //8
-        var seed3Slot = (bracketLengthArray.length / 2) + 1; //5
-        var seed4Slot = (bracketLengthArray.length / 2); //4
+        var seed3Slot = (bracketLengthArray.length / 2); //5
+        var seed4Slot = (bracketLengthArray.length / 2) - 1; //4
         var seed5Slot = Math.round(bracketLengthArray.length / 2.667); //3
         var seed6Slot = Math.round(bracketLengthArray.length / 1.334);
         var seed7Slot = Math.round(bracketLengthArray.length / 1.143);
@@ -169,50 +169,14 @@ myApp.service('mainService', function () {
 
 //___________________________________________Adding Byes___________________________________________    
     
-    this.addByes = function (byeArray, playersInBracketOrder) {
-        console.log("this is byeArray(recent)", byeArray);
-        console.log("this is mainArray(recent)", playersInBracketOrder);
+
+    this.addUnseededPlayers = function(unseededPlayers, playersInBracketOrder) {
         for (var i = 0; i < playersInBracketOrder.length; i++) {
-            if (playersInBracketOrder[i].rank === 1 && byeArray[0].name === "bye") {
-                playersInBracketOrder.splice(i + 1, 1, byeArray[0]);
-                byeArray.pop();
-
-            } else if (playersInBracketOrder[i].rank === 2 && byeArray[0].name === "bye") {
-                playersInBracketOrder.splice(i - 1, 1, byeArray[0]);
-                byeArray.pop();
-                
-            } else if (playersInBracketOrder[i].rank === 3 && byeArray[0].name == "bye") {
-                playersInBracketOrder.splice(i + 1, 1, byeArray[0]);
-                byeArray.pop();  
-                
-            } else if (playersInBracketOrder[i].rank === 4 && byeArray[0].name == "bye") {
-                playersInBracketOrder.splice(i - 1, 1, byeArray[0]);
-                byeArray.pop();  
-                
-            } else if (playersInBracketOrder[i].rank === 5 && byeArray[0].name == "bye") {
-                playersInBracketOrder.splice(i + 1, 1, byeArray[0]);
-                byeArray.pop();  
-                
-            } else if (playersInBracketOrder[i].rank === 6 && byeArray[0].name == "bye") {
-                playersInBracketOrder.splice(i - 1, 1, byeArray[0]);
-                byeArray.pop();  
-                
-            } else if (playersInBracketOrder[i].rank === 3 && byeArray[0].name == "bye") {
-                playersInBracketOrder.splice(i + 1, 1, byeArray[0]);
-                byeArray.pop();  
-                
-            }   
+            if (playersInBracketOrder[i] === "player_placeholder") {
+                playersInBracketOrder.splice(i, 1, unseededPlayers[0]);
+                unseededPlayers.shift();
+            }
         }
-        return playersInBracketOrder;
     };
-
-//    this.addUnseededPlayers = function(unseededPlayers, playersInBracketOrder) {
-//        for (var i = 0; i < playersInBracketOrder.length; i++) {
-//            if (playersInBracketOrder[i] === "player_placeholder") {
-//                playersInBracketOrder.splice(i, 1, unseededPlayers[0]);
-//                unseededPlayers.shift();
-//            }
-//        }
-//    };
     
 });
