@@ -6,4 +6,4 @@ myApp.directive('bracketBox', function () {
     };
 
 
-});
+})

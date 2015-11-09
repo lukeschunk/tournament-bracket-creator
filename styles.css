@@ -36,8 +36,8 @@ h1 {
     margin-right: 10px;
 }
 
-#test {
-    height: 100px;
+.test:nth-child(2n){
+    margin-bottom: 50px;
 }
 
 h1 {

@@ -1,7 +1,7 @@
-<div ng-repeat="bracket in bracketSizeArr">
+<div class="test" ng-repeat="player in playersInOrder track by $index">
     <p>
 <!--    <a class="btn btn-default fixed-width" href="#" role="button"> {{ player.name }}  ({{player.rank}})</a>-->
     
-        <a class="btn btn-default fixed-width" href="#" role="button"> TEST</a>
+        <a class="btn btn-info fixed-width" href="#" role="button"> {{ player.name }}</a>
     </p>
 </div>
