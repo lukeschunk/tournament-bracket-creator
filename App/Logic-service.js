@@ -3,57 +3,57 @@ myApp.service('logicService', function () {
     this.makeBracket = function (myParticipants) {
         
         console.log("it's working");
-        //var myParticipants = [
-        //    {
-        //        name: "luke",
-        //        rank: "1"
-        //    },
-        //    {
-        //        name: "jack",
-        //        rank: "2"
-        //    },
-        //    {
-        //        name: "mom",
-        //        rank: "3"
-        //    },
-        //    {
-        //        name: "dad",
-        //        rank: "4"
-        //    },
-        //    {
-        //        name: "alex",
-        //        rank: "5"
-        //    },
-        //    {
-        //        name: "dude",
-        //        rank: ""
-        //    },
-        //    {
-        //        name: "ulgar",
-        //        rank: ""
-        //    },
-        //    {
-        //        name: "stephen",
-        //        rank: ""
-        //    },
-        //    {
-        //        name: "marcus",
-        //        rank: ""
-        //    },
-        //    {
-        //        name: "paige",
-        //        rank: ""
-        //    },
-        //    {
-        //        name: "a final person",
-        //        rank: ""
-        //    },
-        //    {
-        //        name: "is there any reason",
-        //        rank: ""
-        //    }
-        //
-        //];
+//        var myParticipants = [
+//            {
+//                name: "luke",
+//                rank: "1"
+//            },
+//            {
+//                name: "jack",
+//                rank: "2"
+//            },
+//            {
+//                name: "mom",
+//                rank: "3"
+//            },
+//            {
+//                name: "dad",
+//                rank: "4"
+//            },
+//            {
+//                name: "alex",
+//                rank: "5"
+//            },
+//            {
+//                name: "dude",
+//                rank: ""
+//            },
+//            {
+//                name: "ulgar",
+//                rank: ""
+//            },
+//            {
+//                name: "stephen",
+//                rank: ""
+//            },
+//            {
+//                name: "marcus",
+//                rank: ""
+//            },
+//            {
+//                name: "paige",
+//                rank: ""
+//            },
+//            {
+//                name: "a final person",
+//                rank: ""
+//            },
+//            {
+//                name: "is there any reason",
+//                rank: ""
+//            }
+//        
+//        ];
 
         console.log("myparticipants.length", myParticipants.length);
 
@@ -174,7 +174,7 @@ myApp.service('logicService', function () {
             console.log("this is seededPlyaersInOrder", seededPlayersInOrder);
             console.log("this is participants", participants);
 
-            debugger;
+            
             for (var i = 0; i < participants.length; i++) {
                 for (var j = 0; j < seededPlayersInOrder.length; j++) {
                     if (seededPlayersInOrder[j].name && seededPlayersInOrder[j].name === participants[i].name && byes > 0 && seededPlayersInOrder[j + 1] === "Placeholder_participant") {

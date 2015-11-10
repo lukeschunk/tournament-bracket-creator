@@ -1,93 +1,121 @@
-myApp.controller("myController", ["$scope", "mainService", "logicService", "createMatches", function ($scope, mainService, logicService, createMatches) {
+myApp.controller("myController", ["$scope", "mainService", "logicService", "createRounds", "bracketObjectGenerator", "$state", MyController]);
+
+function MyController($scope, mainService, logicService, createRounds, bracketObjectGenerator, $state) {
     $scope.test = "test";
-    $scope.players = [];
+    $scope.players = [
+        {
+            name: "luke",
+            rank: "1"
+            },
+        {
+            name: "jack",
+            rank: "2"
+            },
+        {
+            name: "mom",
+            rank: "3"
+            },
+        {
+            name: "dad",
+            rank: "4"
+            },
+        {
+            name: "alex",
+            rank: "5"
+            },
+//            {
+//                name: "dude",
+//                rank: ""
+//            },
+//            {
+//                name: "ulgar",
+//                rank: ""
+//            },
+//            {
+//                name: "stephen",
+//                rank: ""
+//            },
+//            {
+//                name: "marcus",
+//                rank: ""
+//            },
+//            {
+//                name: "paige",
+//                rank: ""
+//            },
+//            {
+//                name: "a final person",
+//                rank: ""
+//            },
+
+
+        ];
+
+
+
+    //_____________________________________ADDING PLAYERS____________________________________________
+
 
     $scope.addPlayerToTable = function () {
+        console.log("this is current player", $scope.currentPlayer);
         //Function below calls from the service 
-        var valid = mainService.seeIfInputIsCorrect($scope.currentPlayer);
+        //        var valid = mainService.seeIfInputIsCorrect($scope.currentPlayer);
+        var valid = true;
         if (valid) {
+            console.log("this is scope:", $scope);
             $scope.players.push($scope.currentPlayer);
             $scope.currentPlayer = {};
-            console.log("this is scope.players", $scope.players);
-
         }
     };
 
 
-//    $scope.playersInBracketOrder = [];
-//    $scope.currentPlayer = {
-//        name: "",
-//        rank: ""
-//    }
+
+
+    //_____________________________________ON BUTTON CLICK_____________________________________________
+    $scope.makeMeTrue16 = false;
+    $scope.makeMeTrue8 = false;
+    $scope.bracket = true;
 
     $scope.doIt = function () {
 
         $scope.playersInFinalBracket = logicService.makeBracket($scope.players);
 
-
         console.log($scope.playersInFinalBracket);
-        var matches = createMatches.createMatches($scope.playersInFinalBracket);
-        console.log("this is matches", matches);
+        var matches = createRounds.createMatches($scope.playersInFinalBracket);
+        console.log("this is $scope.playersInFinalBracket", $scope.playersInFinalBracket);
+
+
+
+        //____________________________________GENERATE ROUND ARRAYS (FROM ROUND SERvICE_____________________________________________
+
+        $scope.objectOfRounds = createRounds.createArrayOfRoundLenghts($scope.playersInFinalBracket.length);
+        console.log("this is object of rounds on the controller", $scope.objectOfRounds);
+
+        //____________________________________SHOW BRACKET BASED ON SIZE OF FIRST ROUND____________________________________________
+
+
+        show($scope.playersInFinalBracket);
+
+        function show(playersInFinalBracket) {
+            //console.log($scope.makeMeTrue16);
+            //console.log($scope.makeMeTrue8);
+            if ($scope.playersInFinalBracket.length === 16) {
+                $scope.makeMeTrue16 = true;
+            }
+            if ($scope.playersInFinalBracket.length === 8) {
+                $scope.makeMeTrue8 = true;
+            }
+        }
+
+        
+        $scope.bracket = false;
+//        $state.go('bracket');
+
     }
-    
-    
 
-    //        $scope.bracketSize = mainService.determineBracketSize($scope.players.length); //function is passed in the length of the array of players
-    //        console.log("this is the bracket size", $scope.bracketSize);
-    //
-    //        //_____________________________________Create Bye Array____________________________________________
-    //
-    //        var myByeArray = mainService.createByeArray($scope.bracketSize.length, $scope.players.length);
-    //
-    //
-    //
-    //        console.log("(CONTROLLER)this is the bye Array", myByeArray); //$scope.myByeArray is the array of the byes
-    //
-    //        //_______________________________________Create Unseeded Players Array____________________________________________
-    //
-    //        $scope.unseededPlayersArray = mainService.placeUnseededPlayersIntoArray($scope.players);
-    //
-    //        console.log("this is $scope.unseededPlayersArray", $scope.unseededPlayersArray); //This is the unseeded players array
-    //
-    //
-    //        //___________________________________________Create PlaceHolder Array_____________________________________________
-    //
-    //
-    //        for (var i = 1; i <= $scope.bracketSize.length; i++) {
-    //
-    //            $scope.playersInBracketOrder.push("player_placeholder");
-    //        }
-    //
-    //
-    //        //__________________________________________Add Seeded Players into Main Array____________________________________________
-    //
-    //        $scope.playersInOrder = mainService.placeSeededPlayersIntoSlots($scope.players, $scope.playersInBracketOrder);
-    //        console.log("this is the placeHolder Array + The Seeded Players", $scope.playersInOrder); //$scope.playersInOrder is the main Array
-    //
-    //
-    //        //___________________________________________Add Byes to Main Array_____________________________________________
-    //
-    //        //        $scope.playersInOrderWithByes = mainService.addByes(myByeArray, $scope.playersInOrder);
-    //        //        console.log("this is playersInOrderWithByes", $scope.playersInOrderWithByes);
-    //
-    //        //___________________________________________Add Unseeded Players to Main Array__________________________________________
-    //
-    //        $scope.finalBracket = mainService.addUnseededPlayers($scope.unseededPlayersArray, $scope.playersInOrderWithByes);
-    //        console.log("this is final bracket!", $scope.finalBracket);
-    //
-    //
-    //        //___________________________________________Add Byes to Main Array (2nd Attempt)____________________________________________   
-    //
-    //        addByes(myByeArray, $scope.playersInOrder);
-    //
-    //        function addByes(arrayOfByes, mainArray) {
-    //            console.log("this is array of Byes", arrayOfByes);
-    //            console.log("this is mainArray", mainArray);
-    //
-    //        }
+    $scope.rounds2 = [0, 1, 2, 3, 4, 5, 6, 7];
+    $scope.rounds3 = [0, 1, 2, 3];
+    $scope.rounds4 = [0, 1];
+    //console.log('scope:', $scope);
 
-
-
-
-
-}]);
+}

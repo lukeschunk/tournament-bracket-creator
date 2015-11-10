@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title> Tournament Bracket App </title>
+    <!--    _____________________________________________ ANGULAR _____________________________________________-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.7/angular.js"></script>
+    <!--    _____________________________________________ UI ROUTER _____________________________________________-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
 
     <link rel="stylesheet" href="normalize.css">
     <!-- Latest compiled and minified CSS -->
-<!--    _____________________________________________ BOOTSTRAP _____________________________________________-->
+    <!--    _____________________________________________ BOOTSTRAP _____________________________________________-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-<!--    _____________________________________________ BOOTSTRAP THEME _____________________________________________-->
+    <!--    _____________________________________________ BOOTSTRAP THEME _____________________________________________-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.5/cosmo/bootstrap.css">
-<!--    _____________________________________________ MY CSS _____________________________________________-->
+    <!--    _____________________________________________ MY CSS _____________________________________________-->
     <link rel="stylesheet" href="styles.css">
 
 </head>
@@ -22,12 +25,9 @@
     <div class="container">
 
         <div class="content-container">
-            <h1> Tournament Creator! </h1>
-            <user-input-box></user-input-box>
 
-            <small-block> </small-block>
-            
-            <bracket-box></bracket-box>
+            <ui-view></ui-view>
+
         </div>
     </div>
     <!--    _____________________________________________ JS FILES _____________________________________________-->
@@ -35,9 +35,8 @@
     <script src="App/main-controller.js"></script>
     <script src="App/service.js"></script>
     <script src="App/Logic-service.js"></script>
-    <script src="App/create-matches-service.js"></script>
-    <script src="Directives/input-directive.js"></script>
-    <script src="Directives/box-dir.js"></script>
+    <script src="App/bracket-object-generator-service.js"></script>
+    <script src="App/create-rounds-service.js"></script>
 </body>
 
 </html>
