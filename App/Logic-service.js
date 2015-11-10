@@ -6,37 +6,49 @@ var myParticipants = [
         rank: "1"
     },
     {
-        name: "luis",
+        name: "jack",
         rank: "2"
     },
     {
-        name: "ryan",
+        name: "mom",
         rank: "3"
     },
     {
-        name: "stella",
+        name: "dad",
         rank: "4"
     },
     {
         name: "alex",
-        rank: "5"
+        rank: ""
     },
     {
         name: "dude",
-        rank: "6"
-    },
-    {
-        name: "andk",
-        rank: "7"
-    },
-    {
-        name: "laksjdlf",
-        rank: "8"
-    },
-    {
-        name: "alksdjfl",
         rank: ""
     },
+    {
+        name: "ulgar",
+        rank: ""
+    },
+    {
+        name: "stephen",
+        rank: ""
+    },
+    {
+        name: "marcus",
+        rank: ""
+    },
+    {
+        name: "paige",
+        rank: ""
+    },
+    {
+        name: "a final person",
+        rank: ""
+    },
+    {
+        name: "is there any reason",
+        rank: ""
+    }
 
 ];
 
@@ -88,7 +100,7 @@ var seedPlacement = {
 
 
 function determineBracketSize(numberOfPlayers) {
-    debugger;
+
     var placeHolderArray = [];
     var possibleSizes = [2, 4, 8, 16, 32, 64];
     for (var i = 0; i < possibleSizes.length; i++) {
@@ -159,10 +171,10 @@ function placeByes(byes, seededPlayersInOrder, participants) {
     console.log("this is seededPlyaersInOrder", seededPlayersInOrder);
     console.log("this is participants", participants);
 
-
+    debugger;
     for (var i = 0; i < participants.length; i++) {
         for (var j = 0; j < seededPlayersInOrder.length; j++) {
-            if (seededPlayersInOrder[j].name && seededPlayersInOrder[j].name === participants[i].name && byes > 1 && seededPlayersInOrder[j + 1] === "Placeholder_participant") {
+            if (seededPlayersInOrder[j].name && seededPlayersInOrder[j].name === participants[i].name && byes > 0 && seededPlayersInOrder[j + 1] === "Placeholder_participant") {
                 console.log("testing");
                 seededPlayersInOrder[j + 1] = {
                     name: "bye",
@@ -170,44 +182,46 @@ function placeByes(byes, seededPlayersInOrder, participants) {
                 }
                 byes--;
                 
-            } else if (seededPlayersInOrder[j].name && seededPlayersInOrder[j].name === participants[i].name && byes > 1 && seededPlayersInOrder[j - 1] === "Placeholder_participant") {
-                console.log("testing");
-                seededPlayersInOrder[j + 1] = {
+            } else if (seededPlayersInOrder[j].name && seededPlayersInOrder[j].name === participants[i].name && byes > 0 && seededPlayersInOrder[j - 1] === "Placeholder_participant") {
+                console.log("testing 2");
+                seededPlayersInOrder[j - 1] = {
                     name: "bye",
                     rank: ""
                 }
                 byes--;
-            }
+            } 
 
         }
-        return seededPlayersInOrder;
+
 
     }
+    return seededPlayersInOrder;
+}
 
-    var slotsWithSeededPlayersAndByes = placeByes(createBracket(myParticipants.length).byes, slotsWithSeededPlayers, myParticipants);
+var slotsWithSeededPlayersAndByes = placeByes(createBracket(myParticipants.length).byes, slotsWithSeededPlayers, myParticipants);
 
-    console.log("this is SlotsWithSeededPlayersAndByes", slotsWithSeededPlayersAndByes);
+console.log("this is SlotsWithSeededPlayersAndByes", slotsWithSeededPlayersAndByes);
 
-    //_________________________________PLACE UNSEEDED PLAYERS INTO ARRAY_______________________________________
+//_________________________________PLACE UNSEEDED PLAYERS INTO ARRAY_______________________________________
 
 
-    //    function placeUnseeded(participants, seededPlayersInOrder) {
-    //        var unseededPlayersArr = [];
-    //        for (var i = 0; i < participants.length; i++) {
-    //            if (!participants[i].rank) {
-    //                unseededPlayersArr.push(participants[i]);
-    //            }
-    //        }
-    //        for (var i = 0; i < seededPlayersInOrder.length; i++) {
-    //            if (seededPlayersInOrder[i] === "Placeholder_participant") {
-    //                seededPlayersInOrder[i] = unseededPlayersArr[0];
-    //                unseededPlayersArr.shift();
-    //            }
-    //        }
-    //        return seededPlayersInOrder;
-    //    }
-    //
-    //    var completedSlots = placeUnseeded(myParticipants, slotsWithSeededPlayersAndByes);
-    //    console.log("this is the completedSlots!", completedSlots);
+//function placeUnseeded(participants, seededPlayersInOrder) {
+//    var unseededPlayersArr = [];
+//    for (var i = 0; i < participants.length; i++) {
+//        if (!participants[i].rank) {
+//            unseededPlayersArr.push(participants[i]);
+//        }
+//    }
+//    for (var i = 0; i < seededPlayersInOrder.length; i++) {
+//        if (seededPlayersInOrder[i] === "Placeholder_participant") {
+//            seededPlayersInOrder[i] = unseededPlayersArr[0];
+//            unseededPlayersArr.shift();
+//        }
+//    }
+//    return seededPlayersInOrder;
+//}
+//
+//var completedSlots = placeUnseeded(myParticipants, slotsWithSeededPlayersAndByes);
+//console.log("this is the completedSlots!", completedSlots);
 
-    //})
+//})
