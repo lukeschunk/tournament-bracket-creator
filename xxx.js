@@ -38,3 +38,32 @@
         }
         return playersInBracketOrder;
     };
+
+
+        for (var i = 0; i < seededPlayersInOrder.length; i++) {
+            console.log("this is byes", byes);
+            if (seededPlayersInOrder[i].rank === 1 && byes > 1) {
+                seededPlayersInOrder[i + 1] = {
+                    name: "bye",
+                    rank: ""
+                };
+                byes--;
+
+            } else if (seededPlayersInOrder[i].rank === 2 && byes > 1) {
+                seededPlayersInOrder[i + 1] = {
+                    name: "bye",
+                    rank: ""
+                };
+                byes--;
+            } else if (seededPlayersInOrder[i].rank === 3 && byes > 1) {
+                seededPlayersInOrder[i + 1] = {
+                    name: "bye",
+                    rank: ""
+                };
+                byes--;
+            } else if (seededPlayersInOrder[i].rank === 4 && byes > 1) {
+                seededPlayersInOrder[i - 1] = {
+                    name: "bye",
+                    rank: ""
+                }
+            }s

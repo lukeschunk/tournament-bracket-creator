@@ -1,4 +1,4 @@
-myApp.controller("myController", ["$scope", "mainService", function ($scope, mainService) {
+myApp.controller("myController", ["$scope", "mainService", "logicService", function ($scope, mainService, logicService) {
     $scope.test = "test";
     $scope.players = [];
 

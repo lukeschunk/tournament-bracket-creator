@@ -33,8 +33,8 @@
             12: 13,
             13: 6,
             14: 9,
-            15: 14,
-            16: 1
+            15: 1,
+            16: 14
         }
     };
 
@@ -92,24 +92,24 @@
             rounds: rounds
         }
     }
-    
-    
+
+
 
     function getRounds(bracketSize) {
         return Math.log(bracketSize) / Math.log(2);
     }
 
-        //_____________________________TEST OUT PROPERTIES _______________________________________
-//    for (var i = 2; i <= 64; i *= 2) {
-//        console.log(createBracket(i));
-//    }
+    //_____________________________TEST OUT PROPERTIES _______________________________________
+    //    for (var i = 2; i <= 64; i *= 2) {
+    //        console.log(createBracket(i));
+    //    }
 
     //_________________________________PLACE SEEDED PLAYERS INTO ARRAY _______________________________________
 
     function placeSeededPlayers(participants, slots, seedPlacement) {
-//        console.log("this is participants", participants);
+        //        console.log("this is participants", participants);
         console.log("this is slots", slots);
-//        console.log("this is seedplacement[16][3]", seedPlacement['16']['3']);
+        //        console.log("this is seedplacement[16][3]", seedPlacement['16']['3']);
 
         participants.forEach(function (participant) {
             slots[seedPlacement[slots.length][participant.rank]] = participant;
@@ -119,9 +119,188 @@
 
 
 
-    var updatedSlots = placeSeededPlayers(myParticipants, createBracket(11).slots, seedPlacement);
+    var updatedSlots = placeSeededPlayers(myParticipants, createBracket(myParticipants.length).slots, seedPlacement); //REPLACE 11 with actual numberOf Players (myParticipants.length-1?)
     console.log("this is updatedSlots", updatedSlots);
 
 
+    //_________________________________PLACE BYES INTO ARRAY (SEEDS) _______________________________________
+    var myParticipants = [
+        {
+            name: "luke",
+            rank: 1
+                    },
+        {
+            name: "luis",
+            rank: 2
+        },
+        {
+            name: "gabe",
+            rank: 3
+        },
+        {
+            name: "test",
+            rank: 4
+        },
+        {
+            name: "spencer",
+            rank: ""
+        },
+        {
+            name: "stella",
+            rank: ""
+        },
+        {
+            name: "paul",
+            rank: ""
+        }
+        ];
 
-    var seedPlacementByRank
+    var testy = [
+        {
+            name: "luke",
+            rank: 1
+        },
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+        {
+            name: "test",
+            rank: 4
+        },
+        {
+            name: "gabe",
+            rank: 3
+        },
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+
+        {
+            name: "luis",
+            rank: 2
+        },
+"Placeholder_participant"
+    ];
+
+    function placeByes(byes, seededPlayersInOrder, participants) {
+        console.log("this is byes", byes);
+        console.log("this is seededPlyaersInOrder", seededPlayersInOrder);
+        console.log("this is participants", participants);
+
+
+        for (var i = 0; i < participants.length; i++) {
+            for (var j = 0; j < seededPlayersInOrder.length; j++) {
+                if (seededPlayersInOrder[j].name && seededPlayersInOrder[j].name === participants[i].name && byes > 0) {
+                    console.log("testing");
+                    seededPlayersInOrder[j + 1] = {
+                        name: "bye",
+                        rank: ""
+                    }
+                    byes--;
+                }
+            }
+
+        }
+        return seededPlayersInOrder;
+
+    }
+
+    var test = placeByes(3, testy, myParticipants);
+
+    console.log(test);
+
+    //_________________________________PLACE UNSEEDED PLAYERS INTO ARRAY_______________________________________
+    var myParticipants = [
+        {
+            name: "luke",
+            rank: 1
+                    },
+        {
+            name: "luis",
+            rank: 2
+        },
+        {
+            name: "gabe",
+            rank: 3
+        },
+        {
+            name: "test",
+            rank: 4
+        },
+        {
+            name: "spencer",
+            rank: ""
+        },
+        {
+            name: "stella",
+            rank: ""
+        },
+        {
+            name: "paul",
+            rank: ""
+        }
+        ];
+
+    var testy = [
+        {
+            name: "luke",
+            rank: 1
+        },
+        {
+            name: "bye",
+            rank: ""
+        },
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+        {
+            name: "test",
+            rank: 4
+        },
+        {
+            name: "gabe",
+            rank: 3
+        },
+        {
+            name: "bye",
+            rank: ""
+        },
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+"Placeholder_participant",
+        {
+            name: "luis",
+            rank: 2
+        },
+        {
+            name: "bye",
+            rank: ""
+        }
+    ];
+
+    function placeUnseeded(participants, seededPlayersInOrder) {
+        var unseededPlayersArr = [];
+        for (var i = 0; i < participants.length; i++) {
+            if (!participants[i].rank) {
+                unseededPlayersArr.push(participants[i]);
+            }
+        }
+        for (var i = 0; i < seededPlayersInOrder.length; i++) {
+            if (seededPlayersInOrder[i] === "Placeholder_participant") {
+                seededPlayersInOrder[i] = unseededPlayersArr[0];
+                unseededPlayersArr.shift();
+            }
+        }
+        return seededPlayersInOrder;
+    }
+
+    var testagain = placeUnseeded(myParticipants, testy);
+    console.log(testagain);
