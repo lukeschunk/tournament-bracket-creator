@@ -10,50 +10,53 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
     $scope.test = "test";
     $scope.players = [
         {
-            name: "luke",
+            name: "Ted Nugent",
             rank: "1"
             },
         {
-            name: "jack",
+            name: "Master Chief",
             rank: "2"
             },
         {
-            name: "mom",
+            name: "Chris Rock",
             rank: "3"
             },
         {
-            name: "dad",
+            name: "Jeremy",
             rank: "4"
             },
         {
-            name: "alex",
+            name: "Peter Krieg",
             rank: "5"
             },
         {
-            name: "dude",
+            name: "Luke Dog Schunk",
             rank: ""
             },
         {
-            name: "ulgar",
+            name: "Cynthia Morin",
             rank: ""
             },
         {
-            name: "stephen",
+            name: "Michelle Obama",
             rank: ""
             },
         {
-            name: "marcus",
+            name: "Paige Heyn",
             rank: ""
             },
         {
-            name: "paige",
+            name: "Stevie Nix",
             rank: ""
             },
         {
-            name: "a final person",
+            name: "Hipster_000",
             rank: ""
-            },
-
+        },
+        {
+            name: "Kate Downton",
+            rank: ""
+        }
 
         ];
 
@@ -124,6 +127,9 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
         $scope.bracket = true;
         $scope.makeMeTrue16 = false;
         $scope.makeMeTrue8 = false;
+        $scope.rounds2 = ["", "", "", "", "", "", "", ""];
+        $scope.rounds3 = ["", "", "", ""];
+        $scope.rounds4 = ["", ""];
 
     }
 
@@ -166,12 +172,12 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
         console.log("this is $scope.rounds2", $scope.rounds2);
     };
 
-    $scope.advanceWinner2 = function(player) {
+    $scope.advanceWinner2 = function (player) {
         mainService.advanceWinner(player, $scope.rounds2, $scope.rounds3);
 
     };
-    
-        $scope.advanceWinner3 = function(player) {
+
+    $scope.advanceWinner3 = function (player) {
         mainService.advanceWinner(player, $scope.rounds3, $scope.rounds4);
 
     };

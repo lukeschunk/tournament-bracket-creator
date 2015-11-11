@@ -89,10 +89,12 @@ table-margin {
 .round2 {
     margin-left: 20px;
     margin-top: 30px;
+    font-size: 1.4em;
 }
 
 .round2 a{
     height: 50px;
+    line-height: 25px;
 }
 
 .round2 div:nth-child(2n) {
@@ -105,10 +107,12 @@ table-margin {
 .round3 {
     margin-left: 20px;
     margin-top: 60px;
+    font-size: 1.6em;
 }
 
 .round3 a{
     height: 100px;
+    line-height: 74px;
 }
 
 .round3 div:nth-child(2n) {
@@ -122,10 +126,12 @@ table-margin {
 .round4 {
     margin-left: 20px;
     margin-top: 200px;
+    font-size: 1.6em;
 }
 
 .round4 a{
     height: 120px;
+    line-height: 90px;
 }
 
 .round4 div:nth-child(2n) {
