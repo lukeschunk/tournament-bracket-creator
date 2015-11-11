@@ -109,6 +109,10 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
 
         
         $scope.bracket = false;
+        
+        $scope.flip = function() {
+            $scope.bracket = true;
+        }
 //        $state.go('bracket');
 
     }

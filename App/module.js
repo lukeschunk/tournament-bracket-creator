@@ -16,6 +16,13 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
             url: '/bracket',
             templateUrl: 'Partials/Created-Bracket.html',
             controller: 'myController'
+        })
+    
+        .state('welcome', {
+            url: '/welcome',
+            templateUrl: 'Partials/welcome-partial.html',
+            controller: 'myController'
+            
         });
 
 });
