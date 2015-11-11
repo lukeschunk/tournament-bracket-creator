@@ -3,57 +3,7 @@ myApp.service('logicService', function () {
     this.makeBracket = function (myParticipants) {
         
         console.log("it's working");
-//        var myParticipants = [
-//            {
-//                name: "luke",
-//                rank: "1"
-//            },
-//            {
-//                name: "jack",
-//                rank: "2"
-//            },
-//            {
-//                name: "mom",
-//                rank: "3"
-//            },
-//            {
-//                name: "dad",
-//                rank: "4"
-//            },
-//            {
-//                name: "alex",
-//                rank: "5"
-//            },
-//            {
-//                name: "dude",
-//                rank: ""
-//            },
-//            {
-//                name: "ulgar",
-//                rank: ""
-//            },
-//            {
-//                name: "stephen",
-//                rank: ""
-//            },
-//            {
-//                name: "marcus",
-//                rank: ""
-//            },
-//            {
-//                name: "paige",
-//                rank: ""
-//            },
-//            {
-//                name: "a final person",
-//                rank: ""
-//            },
-//            {
-//                name: "is there any reason",
-//                rank: ""
-//            }
-//        
-//        ];
+
 
         console.log("myparticipants.length", myParticipants.length);
 

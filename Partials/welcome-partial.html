@@ -18,12 +18,12 @@
 
 
         <div class="right-panel">
-            <p id="tournament-name"> Tournament Name: <span> {{ input }} </span></p>
+            <p id="tournament-name"> Tournament: <span> {{ input }} </span></p>
             
             <p> Sport: <span>{{ input2 }} </span></p>
             <p> Creator: <span> {{ input3 }} </span></p>
 
-            <a class="btn btn-primary large-blue"> Let's Go!!! </a>
+            <a ui-sref="home" ng-click="letsGo(); getInputs()" class="btn btn-primary large-blue"> Let's Go!!! </a>
 
 
         </div>

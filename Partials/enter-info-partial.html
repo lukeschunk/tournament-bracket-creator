@@ -13,7 +13,7 @@
     <div ng-show="bracket" class="container">
 
         <div class="content-container">
-            <h1> Tournament Creator! </h1>
+            <h1> {{ inputsObj.input1 }}  </h1>
 
 
             <div class="block">
@@ -29,6 +29,8 @@
                     <!--        ______________________________________BUTTONS _____________________________________________-->
                     <button type="submit" class="btn btn-default submit-player"> Submit Player</button>
                     <button ng-click="doIt()" type="button" class="btn btn-default">Make Bracket </button>
+                    
+                    <button ui-sref="welcome" type="button" class="btn btn-default create-new-tournament"> Create New Tournament </button>
                 </form>
 
             </div>
@@ -40,11 +42,13 @@
                 <table class="table table-hover table-margin">
                     <tr>
                         <th> Player/Team Name</th>
+                        <th></th>
                         <th> Rank </th>
                     </tr>
 
-                    <tr ng-repeat="player in players | orderBy:'rank'">
-                        <td> {{ player.name }} </td>
+                    <tr ng-click="deletePlayer(player)" ng-repeat="player in players | orderBy:'rank'">
+                        <td ng-mouseover="show()"> {{ player.name }} </td>
+                        <td> <span ng-show="clickToDelete">Click to Delete</span></td>
                         <td> {{ player.rank }} </td>
                     </tr>
 
@@ -69,18 +73,18 @@
 <div ng-hide="bracket" class="container">
 
     <div class="content-container">
-        <h1>  Your Tournament Name Goes Here </h1>
+        <h1>  {{ inputsObj.input1 }}  </h1>
         
         <div>
         <a ng-click="flip()" class="btn btn-info" id="add-players" href="#" role="button"> Add More Players </a>
         </div>
         
         <div class="round1 round">
-            <div class="test" ng-repeat="player in playersInFinalBracket track by $index">
+            <div class="test"  ng-repeat="player in playersInFinalBracket track by $index">
                 <p>
                     <!--    <a class="btn btn-default fixed-width" href="#" role="button"> {{ player.name }}  ({{player.rank}})</a>-->
 
-                    <a id="border-radius" ng-class="['btn', {'btn-primary': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> 
+                    <a ng-click="advanceWinner(player)"  id="border-radius" ng-class="['btn', {'btn-primary': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> 
                        {{ player.name }} <span ng-show="player.rank"> ({{player.rank}})</span> 
                     </a>
                 </p>
@@ -101,33 +105,33 @@
         <div class="16">
             <div ng-show="makeMeTrue16">
                 <div class="round2 round">
-                    <div class="test" ng-repeat="round in rounds2 track by $index">
+                    <div class="test" ng-repeat="player in rounds2 track by $index">
                         <p>
                             <!--    <a class="btn btn-default fixed-width" href="#" role="button"> {{ player.name }}  ({{player.rank}})</a>-->
 
-                            <a id="border-radius" ng-class="['btn', {'btn-danger': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> {{ player.name }} <span ng-show="player.rank"> ({{player.rank}})</span> </a>
+                            <a ng-click="advanceWinner2(player)" id="border-radius" ng-class="['btn', {'btn-primary': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> {{ player.name }} <span ng-show="player.rank"> ({{player.rank}})</span> </a>
                         </p>
                     </div>
 
                 </div>
 
                 <div class="round3 round">
-                    <div class="test" ng-repeat="round in rounds3 track by $index">
+                    <div class="test" ng-repeat="player in rounds3 track by $index">
                         <p>
                             <!--    <a class="btn btn-default fixed-width" href="#" role="button"> {{ player.name }}  ({{player.rank}})</a>-->
 
-                            <a id="border-radius" ng-class="['btn', {'btn-danger': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> {{ player.name }} <span ng-show="player.rank"> ({{player.rank}})</span> </a>
+                            <a ng-click="advanceWinner3(player)" id="border-radius" ng-class="['btn', {'btn-primary': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> {{ player.name }} <span ng-show="player.rank"> ({{player.rank}})</span> </a>
                         </p>
                     </div>
 
                 </div>
 
                 <div class="round4 round">
-                    <div class="test" ng-repeat="round in rounds4 track by $index">
+                    <div class="test" ng-repeat="player in rounds4 track by $index">
                         <p>
                             <!--    <a class="btn btn-default fixed-width" href="#" role="button"> {{ player.name }}  ({{player.rank}})</a>-->
 
-                            <a id="border-radius" ng-class="['btn', {'btn-danger': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> {{ player.name }} <span ng-show="player.rank"> ({{player.rank}})</span> </a>
+                            <a id="border-radius" ng-class="['btn', {'btn-primary': player.rank}, {'btn-default': !player.rank}, 'fixed-width']" href="#" role="button"> {{ player.name }} <span ng-show="player.rank"> ({{player.rank}})</span> </a>
                         </p>
                     </div>
 

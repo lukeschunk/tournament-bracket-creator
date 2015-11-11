@@ -1,6 +1,12 @@
-myApp.controller("myController", ["$scope", "mainService", "logicService", "createRounds", "bracketObjectGenerator", "$state", MyController]);
+myApp.controller("myController", ["$scope", "mainService", "logicService", "createRounds", "bracketObjectGenerator", "$state", "persistService", MyController]);
 
-function MyController($scope, mainService, logicService, createRounds, bracketObjectGenerator, $state) {
+
+
+function MyController($scope, mainService, logicService, createRounds, bracketObjectGenerator, $state, persistService) {
+
+    $scope.clickToDelete = false;
+    $scope.inputsObj = persistService.getInputs();
+
     $scope.test = "test";
     $scope.players = [
         {
@@ -23,30 +29,30 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
             name: "alex",
             rank: "5"
             },
-//            {
-//                name: "dude",
-//                rank: ""
-//            },
-//            {
-//                name: "ulgar",
-//                rank: ""
-//            },
-//            {
-//                name: "stephen",
-//                rank: ""
-//            },
-//            {
-//                name: "marcus",
-//                rank: ""
-//            },
-//            {
-//                name: "paige",
-//                rank: ""
-//            },
-//            {
-//                name: "a final person",
-//                rank: ""
-//            },
+        {
+            name: "dude",
+            rank: ""
+            },
+        {
+            name: "ulgar",
+            rank: ""
+            },
+        {
+            name: "stephen",
+            rank: ""
+            },
+        {
+            name: "marcus",
+            rank: ""
+            },
+        {
+            name: "paige",
+            rank: ""
+            },
+        {
+            name: "a final person",
+            rank: ""
+            },
 
 
         ];
@@ -62,7 +68,6 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
         //        var valid = mainService.seeIfInputIsCorrect($scope.currentPlayer);
         var valid = true;
         if (valid) {
-            console.log("this is scope:", $scope);
             $scope.players.push($scope.currentPlayer);
             $scope.currentPlayer = {};
         }
@@ -107,19 +112,69 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
             }
         }
 
-        
+
         $scope.bracket = false;
-        
-        $scope.flip = function() {
-            $scope.bracket = true;
-        }
-//        $state.go('bracket');
+
+
+        //        $state.go('bracket');
 
     }
 
-    $scope.rounds2 = [0, 1, 2, 3, 4, 5, 6, 7];
-    $scope.rounds3 = [0, 1, 2, 3];
-    $scope.rounds4 = [0, 1];
+    $scope.flip = function () {
+        $scope.bracket = true;
+        $scope.makeMeTrue16 = false;
+        $scope.makeMeTrue8 = false;
+
+    }
+
+    $scope.rounds2 = ["", "", "", "", "", "", "", ""];
+    $scope.rounds3 = ["", "", "", ""];
+    $scope.rounds4 = ["", ""];
     //console.log('scope:', $scope);
+
+
+    //    ________________________________________LET'S GO_______________________________________
+
+    $scope.letsGo = function () {
+        persistService.addInputs($scope.input, $scope.input2, $scope.input3);
+
+
+
+        console.log("this is $scope.inputsObj", $scope.inputsObj);
+
+        return $scope.inputsObj
+
+    };
+
+    //    ____________________________________DELETE UNWANTED PLAYER______________________________________
+
+    $scope.deletePlayer = function (player) {
+        var index = $scope.players.indexOf(player);
+        $scope.players.splice(index, 1);
+
+    };
+
+    //    ___________________________________Show "CLICK TO DELETE______________________________________
+    $scope.show = function () {
+        $scope.clickToDelete = true;
+    }
+
+    //    ___________________________________ADVANCE WINNER___________________________________
+
+    $scope.advanceWinner = function (player) {
+        mainService.advanceWinner(player, $scope.playersInFinalBracket, $scope.rounds2);
+        console.log("this is $scope.rounds2", $scope.rounds2);
+    };
+
+    $scope.advanceWinner2 = function(player) {
+        mainService.advanceWinner(player, $scope.rounds2, $scope.rounds3);
+
+    };
+    
+        $scope.advanceWinner3 = function(player) {
+        mainService.advanceWinner(player, $scope.rounds3, $scope.rounds4);
+
+    };
+
 
 }
