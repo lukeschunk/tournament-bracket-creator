@@ -128,3 +128,130 @@ table-margin {
     margin-bottom: 110px;
 }
 
+
+
+
+
+.full-width {
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(20, 20, 20);
+    padding: 50px;
+    position: relative;
+}
+
+.full-width h1 {
+    margin-top: 0;
+    color: white;
+    font-size: 5em;
+    margin-bottom: 0;
+    text-align: left;
+}
+
+.large-blue {
+    width: 50%;
+    height: 50px;
+    margin-top: 90px;
+    font-size: 1.5em;
+    line-height: 25px;
+}
+
+.full-width h2 {
+    color: white;
+    font-weight: 800;
+    text-align: left;
+    margin-top: 0;
+    font-size: 3.3em;
+    padding-left: 5px;
+}
+
+.heading-container {
+    margin-top: 100px;
+    margin-left: 50px;
+}
+
+#main-input {
+    margin-left: 20px;
+    display: block;
+    background: 0;
+    border: 0;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    outline: none;
+    text-align: center;
+    width: 10.8em;
+    border-bottom-width: 2px;
+    font-size: 3em;
+    position: relative;
+/*    top: 18%;*/
+    top: 144px;
+    font-family: "HelveticaNeue-light", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+#main-input2 {
+    margin-left: 20px;
+    display: inline-block;
+    background: 0;
+    border: 0;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    outline: none;
+    text-align: center;
+    width: 8em;
+    border-bottom-width: 2px;
+    font-size: 2em;
+    position: relative;
+/*    top: 18%;*/
+    top: 144px;
+    font-family: "HelveticaNeue-light", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 40px;
+}
+
+#main-input3 {
+    margin-left: 20px;
+    display: inline-block;
+    background: 0;
+    border: 0;
+    border-bottom: 3px solid #fff;
+    color: #fff;
+    outline: none;
+    text-align: center;
+    width: 8em;
+    border-bottom-width: 2px;
+    font-size: 2em;
+    position: relative;
+/*    top: 18%;*/
+    top: 144px;
+    font-family: "HelveticaNeue-light", "Helvetica Neue Medium", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin-top: 40px;
+}
+
+input:focus::-webkit-input-placeholder 
+{
+    color: transparent;
+}
+
+.right-panel {
+    float: right;
+    border: 1px solid white;
+    width: 30%;
+    height: 340px;
+    position: absolute;
+    right: 140px;
+    top: 180px;
+    text-align: center;
+    color: white;
+}
+
+.right-panel p {
+    font-size: 1.5em;
+    margin-top: 20px;
+    text-align: left;
+    margin-left: 30px;
+    font-weight: bolder;
+}
+
+
+.right-panel span {
+    font-weight: 100;
+}

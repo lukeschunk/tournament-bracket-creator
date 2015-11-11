@@ -7,7 +7,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
 
         .state('home', {
-            url: '/',
+            url: '/home',
             templateUrl: 'Partials/enter-info-partial.html',
             controller: 'myController'
         })
@@ -19,7 +19,7 @@ myApp.config(function ($stateProvider, $urlRouterProvider) {
         })
     
         .state('welcome', {
-            url: '/welcome',
+            url: '/',
             templateUrl: 'Partials/welcome-partial.html',
             controller: 'myController'
             

@@ -1,3 +1,33 @@
-<div>
-    <h1> WHAT THE HELL IS UP?!</h1>
+<div class="full-width">
+
+
+    <div class="heading-container">
+        <h1>
+        MAKE YOUR OWN
+        
+    </h1>
+
+        <h2> TOURNAMENT BRACKET </h2>
+
+
+        <input placeholder="Tournament Name" id="main-input" type="text" ng-model="input">
+
+        <input placeholder="Sport" id="main-input2" type="text" ng-model="input2">
+
+        <input placeholder="Creator" id="main-input3" type="text" ng-model="input3">
+
+
+        <div class="right-panel">
+            <p id="tournament-name"> Tournament Name: <span> {{ input }} </span></p>
+            
+            <p> Sport: <span>{{ input2 }} </span></p>
+            <p> Creator: <span> {{ input3 }} </span></p>
+
+            <a class="btn btn-primary large-blue"> Let's Go!!! </a>
+
+
+        </div>
+        
+
+    </div>
 </div>
