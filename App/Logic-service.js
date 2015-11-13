@@ -28,7 +28,7 @@ myApp.service('logicService', function () {
                 8: 1
             },
 
-            16: { //Size Of Bracket
+            16: { //Size Of Bracketds d
                 1: 0, //Rank and position where Rank shoul dbe 
                 2: 15,
                 3: 8,
