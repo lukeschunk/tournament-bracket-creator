@@ -11,23 +11,23 @@ function MyController($scope, mainService, logicService, createRounds, bracketOb
     $scope.players = [
         {
             name: "Ted Nugent",
-            rank: "1"
+            rank: ""
             },
         {
             name: "Master Chief",
-            rank: "2"
+            rank: ""
             },
         {
             name: "Chris Rock",
-            rank: "3"
+            rank: ""
             },
         {
             name: "Jeremy",
-            rank: "4"
+            rank: ""
             },
         {
             name: "Peter Krieg",
-            rank: "5"
+            rank: ""
             },
         {
             name: "Luke Dog Schunk",

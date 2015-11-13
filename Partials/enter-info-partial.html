@@ -48,7 +48,7 @@
 
                     <tr ng-click="deletePlayer(player)" ng-repeat="player in players | orderBy:'rank'">
                         <td ng-mouseover="show()"> {{ player.name }} </td>
-                        <td> <span ng-show="clickToDelete">Click to Delete</span></td>
+                        <td> <span ng-show="clickToDelete"> </span></td>
                         <td> {{ player.rank }} </td>
                     </tr>
 
